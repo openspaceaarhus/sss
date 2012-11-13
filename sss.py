@@ -21,11 +21,12 @@ yellow = [255,165, 0]
 purple = [102, 0, 172]
 grey = [120,120,120]
 
-pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
-#modified from http://www.freesound.org/people/Koops/sounds/20258/
-flip_snd = pygame.mixer.Sound("flip.ogg")
-pygame.mixer.set_num_channels(W*H)
-print  "ther are ", pygame.mixer.get_num_channels()
+
+# pygame.mixer.pre_init(44100, -16, 2, 2048) # setup mixer to avoid sound lag
+# #modified from http://www.freesound.org/people/Koops/sounds/20258/
+# flip_snd = pygame.mixer.Sound("flip.ogg")
+# pygame.mixer.set_num_channels(W*H)
+# print  "ther are ", pygame.mixer.get_num_channels()
 
 screen = pygame.display.set_mode((W*cell_size,H*cell_size), pygame.NOFRAME)
 clock = pygame.time.Clock()
@@ -56,8 +57,10 @@ for y in range(H):
 
 
 for line in sys.stdin:
-  clock.tick(10000)	
-  
+  clock.tick_busy_loop(1000)	
+  print line
+  if line.startswith("#"):
+    continue
   coords = line.split()
   x = int(coords[0])
   y = int(coords[1])
@@ -67,5 +70,5 @@ for line in sys.stdin:
   pygame.display.update()
   pygame.display.flip()
   
- 
+while (pygame.event.wait().type != pygame.KEYDOWN): pass 
 pygame.quit()

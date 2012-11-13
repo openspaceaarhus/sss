@@ -22,7 +22,9 @@ def write_state():
     for x in range(W):
       i = idx(x,y)
       if not cells[i] == last[i]:
-        print x,y
+        cmd = "{} {}".format(x,y)
+        print cmd
+        sys.stdout.flush()
       last[i] = cells[i]
 
 def neigbors(x,y):
@@ -55,11 +57,13 @@ def show_state():
       s = s + ("*" if cells[k] else " ")
     print s
 
+print 1, 1
+
 for i in range(generations):
 
   update_cells()
   write_state()
-      
-  time.sleep(.7)
-#  print i, ": done"
+  print "#", i, ": done"  
+
+
   
