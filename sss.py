@@ -58,7 +58,7 @@ for y in range(H):
 
 for line in sys.stdin:
   clock.tick_busy_loop(1000)	
-  print line
+#  print line
   if line.startswith("#"):
     continue
   coords = line.split()
