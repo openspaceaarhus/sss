@@ -71,7 +71,7 @@ def show_state():
     print s
 
 
-fixed_cmd_cnt = 1000
+fixed_cmd_cnt = 10000
 
 for i in range(generations):
 
@@ -83,11 +83,12 @@ for i in range(generations):
     print cmd
 
   sys.stdout.flush()
-  #busy loop
-  for b in range(cnt):
-    print "#", i, ": busy ", (fixed_cmd_cnt - b)
-
   update_cells()
+  time.sleep(.76)
+
+  # #busy loop
+  # for b in range(cnt):
+  #   print "#", i, ": busy ", (fixed_cmd_cnt - b)
 
 
 

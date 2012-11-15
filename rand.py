@@ -6,7 +6,7 @@ W = 120
 H = 20
 
 
-for i in range(1000):
+for i in range(100000):
   x = random.randint(0, W-1);
   y = random.randint(0, H-1);
   cmd = "{} {}".format(x,y)
